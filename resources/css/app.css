@@ -1,0 +1,10 @@
+@import 'fonts/nunito';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-y: scroll !important;
+}
+
