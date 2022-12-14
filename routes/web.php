@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,5 +26,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('dashboard', fn () => inertia('Dashboard'))->name('dashboard')->middleware('password.confirm');
+    Route::middleware(['password.confirm'])->group(function () {
+        Route::get('dashboard', fn () => inertia('Dashboard'))->name('dashboard');
+
+        Route::controller(ProfileController::class)->as('profile.')->group(function () {
+            Route::get('/profile', 'edit')->name('edit');
+            Route::patch('/profile', 'update')->name('update');
+            Route::delete('/profile', 'destroy')->name('destroy');
+        });
+    });
 });

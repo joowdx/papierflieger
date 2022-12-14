@@ -9,7 +9,7 @@ const navigation = [
 ];
 
 const dropdown = [
-    {name: 'Profile', href: '#', badge: 'access'},
+    {name: 'Profile', href: route('profile.edit'), badge: 'access'},
     {name: 'Logout', href: route('logout'), method: 'POST'},
 ];
 

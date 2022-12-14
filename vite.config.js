@@ -20,10 +20,10 @@ export default defineConfig({
         }),
     ],
     server: {
-        // https: {
-        //     key: fs.readFileSync('./docker/private/localhost.key'),
-        //     cert: fs.readFileSync('./docker/private/localhost.crt'),
-        // },
+        https: {
+            key: fs.readFileSync('./docker/private/localhost.key'),
+            cert: fs.readFileSync('./docker/private/localhost.crt'),
+        },
         host: '0.0.0.0',
         hmr: {
             host: 'localhost',

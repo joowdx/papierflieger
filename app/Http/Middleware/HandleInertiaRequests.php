@@ -43,7 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
 
-            'time'=> fn () => now(),
+            'time' => fn () => now(),
 
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
