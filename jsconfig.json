@@ -5,6 +5,7 @@
             "@/*": ["resources/js/*"]
         },
         "jsx": "preserve",
+        "allowJs": true,
     },
     "exclude": ["node_modules", "public"]
 }

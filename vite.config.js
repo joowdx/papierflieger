@@ -1,35 +1,30 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 import fs from 'fs'
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: 'resources/js/app.js',
-            ssr: 'resources/js/ssr.js',
+            input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
-        }),
+        svelte(),
     ],
+    optimizeDeps: {
+        include: [
+            '@inertiajs/inertia',
+            '@inertiajs/inertia-svelte',
+        ]
+    },
     server: {
-        https: {
-            key: fs.readFileSync('./docker/private/localhost.key'),
-            cert: fs.readFileSync('./docker/private/localhost.crt'),
-        },
+        // https: {
+        //     key: fs.readFileSync('./docker/private/localhost.key'),
+        //     cert: fs.readFileSync('./docker/private/localhost.crt'),
+        // },
         host: '0.0.0.0',
         hmr: {
             host: 'localhost',
         }
-    },
-    ssr: {
-        noExternal: ['@inertiajs/server'],
     },
 });

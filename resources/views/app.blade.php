@@ -6,10 +6,8 @@
 
         <title inertia>{{ config('app.name') }}</title>
 
-        <link rel="preload" as="font" href="fonts/nunito/XRXW3I6Li01BKofAjsOUYevI.woff2" crossorigin />
-        <link rel="preload" as="font" href="fonts/nunito/XRXV3I6Li01BKofINeaB.woff2" crossorigin />
-
         @routes
+        @vite('resources/css/app.css')
         @vite('resources/js/app.js')
         @inertiaHead
     </head>
